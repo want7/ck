@@ -52,11 +52,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p class="log"><a href="account.html"  >Login</a>
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
+																	
+                    <form action="cart.do" method ="post">
+						<h3>
 							<span class="simpleCart_total"></span></div>
 							<img src="images/cart.png" alt=""/></h3>
-						</a>
+							<input type="submit" value="cart">
+					</form>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>
@@ -72,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 	<div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">Home</a></li>	
+					  <li class=" grid"><a  href="index.jsp">Home</a></li>	
 				      <li><a  href="#">Men</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -245,12 +247,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Subtotal</th>
 		  </tr>
 		  
+		
+		  
+
+		  
+		  
 		  
 		  
 		  
 		  <c:forEach items="${requestScope.list}" var="list" >
 		  <tr>
-			<td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt=""></a>
+			<td class="ring-in"><a href="single.html" class="at-in"><img src="${list.photoName}" class="img-responsive" alt=""></a>
 			<div class="sed">
 				<h5>${list.tradename}</h5>
 				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
@@ -265,30 +272,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </c:forEach>
 		  
 		  
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce1.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium ) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$200.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$200.00</td>
-		  </tr>
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce2.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$150.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$150.00</td>
-		  </tr>
+		
+		
 	</table>
 	<a href="#" class=" to-buy">PROCEED TO BUY</a>
 	<div class="clearfix"> </div>
