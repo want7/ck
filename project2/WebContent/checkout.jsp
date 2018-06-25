@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" import="entity.trade"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Checkout</title>
@@ -242,19 +244,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<th>Delery Detials</th>
 			<th>Subtotal</th>
 		  </tr>
+		  
+		  
+		  
+		  
+		  <c:forEach items="${requestScope.list}" var="list" >
 		  <tr>
 			<td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt=""></a>
 			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
+				<h5>${list.tradename}</h5>
 				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
 			
 			</div>
 			<div class="clearfix"> </div></td>
 			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$100.00</td>
+			<td>$${list.price}</td>
 			<td>FREE SHIPPING</td>
-			<td>$100.00</td>
+			<td>$${list.price}</td>
 		  </tr>
+		  </c:forEach>
+		  
+		  
 		  <tr>
 		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce1.jpg" class="img-responsive" alt=""></a>
 			<div class="sed">

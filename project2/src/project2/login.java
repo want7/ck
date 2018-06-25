@@ -26,15 +26,7 @@ public class login extends HttpServlet {
      Connection con =null;
      PreparedStatement pStatement=null;
 	 ResultSet rst=null;
-	 
-  /**
-   * @see HttpServlet#HttpServlet()
-   */
-  public login() {
-      super();
-      // TODO Auto-generated constructor stub
-  }
-  
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		   request.setCharacterEncoding("utf-8");
@@ -56,11 +48,10 @@ public class login extends HttpServlet {
         	  String password1=users.getPassword() ;
         	  if(name.equals(name1) && password.equals(password1)) {
         		  Cookie cookie=new Cookie("users", name);
-        		  cookie.setMaxAge(120);
+        		  cookie.setMaxAge(60*60);
         		  response.addCookie(cookie);
         		  request.getRequestDispatcher("index.jsp").forward(request,  response);
-        	  }
-        	  
+        	  }      	  
         	  else {
         		  out.println("√‹¬Î¥ÌŒÛ£¨«Î÷ÿ–¬ ‰»Î");
         		  response.setHeader("refresh", "1,url=account.html");

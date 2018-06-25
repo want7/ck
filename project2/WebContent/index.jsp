@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Formal Shirts</a></li>
 										<li><a href="products.html">Sweatpants</a></li>
 										<li><a href="products.html">Swimwear</a></li>
-										<li><a href="product hinos</a></li>
+										<li><a href="product hinos"></a></li>
 										<li><a href="products.html">T-Shirts</a></li>
 										<li><a href="products.html">Underwear & Socks</a></li>
 										
@@ -279,7 +278,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<!-- 修改部分 -->
 			<h1>Recent Products</h1>
-			<div class="content-top1">
+			<div class="content-top1" >
+			<form action="index?id=1001" method="post">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -288,25 +288,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="">Add To Cart</a>
+							    <input type="submit" value="Add To Cart"> 
 								<div class="clearfix"> </div>
 						</div>
 					</div>
+			
 				</div>	
+						</form>
+				<form action="index?id=1002" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
 							<img class="img-responsive" src="images/pi2.png" alt="" />
 						</a>
 						<h3><a href="single.html">T-Shirt</a></h3>
+
 						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="index?id=1001" class="item_add">Add To Cart</a>
+								<h5 class="item_price">$300</h5>								
+						  <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
-						
+	
 					</div>
 				</div>	
+					</form>
+	<form action="index?id=1003" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -315,12 +321,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1002" class="item_add">Add To Cart</a>
+									  <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+					</form>
+		<form action="index?id=1004" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -329,12 +337,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1003" class="item_add">Add To Cart</a>
+							 <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+				</form>	
+						<form action="index?id=1005" method="post">
 			<div class="clearfix"> </div>
 			</div>	
 			<div class="content-top1">
@@ -346,12 +356,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1004" class="item_add">Add To Cart</a>
+								 <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+						</form>	
+						<form action="index?id=1006" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -360,12 +372,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">T-Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1005" class="item_add">Add To Cart</a>
+								 <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+						</form>	
+						<form action="index?id=1007" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -374,12 +388,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Jeans</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1006" class="item_add">Add To Cart</a>
+							 <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+						</form>	
+						<form action="index?id=1008" method="post">
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.html">
@@ -388,12 +404,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3><a href="single.html">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="index?id=1007" class="item_add">Add To Cart</a>
+						 <input type="submit" value="Add To Cart">
 								<div class="clearfix"> </div>
 						</div>
 						
 					</div>
 				</div>	
+						</form>	
 			<div class="clearfix"> </div>
 			</div>	
 		</div>
@@ -467,7 +484,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	</div>
 </div>
-
 <!--//footer-->
 </body>
 </html>

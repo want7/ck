@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Iterator;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.SpinnerListModel;
 
 import org.apache.catalina.Group;
@@ -18,6 +19,7 @@ import org.apache.catalina.UserDatabase;
 import org.apache.catalina.valves.JDBCAccessLogValve;
 
 import entity.Users;
+import entity.orderC;
 import entity.trade;
 import project2.dbdao;
 import project2.register;
@@ -37,6 +39,7 @@ public class userDao implements dao{
 			pstmt.setString(3, user.getPassword());
 		    pstmt.executeUpdate();	
 		} catch (SQLException e) {
+			 System.out.println("register¥ÌŒÛ");
 			// TODO: handle exception
 			e.printStackTrace();
 
@@ -64,16 +67,15 @@ public class userDao implements dao{
 			{
 				user.setUsername(rst.getString("username"));		
 				user.setEmailaddress(rst.getString("emailaddress"));
-				user.setPassword(rst.getString("password"));
-				user.setConfirmpassword(rst.getString("confirmpassword"));
-				return user;
-			}
-			return null;
+				user.setPassword(rst.getString("password"));			
+			}	
+			return user;
 		} catch (SQLException e) {
+			 System.out.println("login¥ÌŒÛ");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return user;
+		return null;
           
 	}
 	
@@ -85,13 +87,14 @@ public class userDao implements dao{
     		String sql2 = "select * from userinfo where username=?";
     		try {
     		conn=dbdao.getConnection();
-    		 stmt = conn.prepareStatement(sql2);
+    	    stmt = conn.prepareStatement(sql2);
  			stmt.setString(1, username);
  		    st = stmt.executeQuery();
  			if(st.next()) {
  				return true;
  			}
     		}catch (Exception e) {
+    			 System.out.println("check¥ÌŒÛ");
 				// TODO: handle exception
     			e.printStackTrace();
 			}finally {
@@ -103,23 +106,21 @@ public class userDao implements dao{
 	  
 	  
 	  
-	  public void add(Users user,trade trade) {
+	  public void add(String user,String id) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
+			PreparedStatement stmt2 = null;
 			ResultSet st = null;
-			int count1=(int)(Math.random())*100;
-			int count2=(int)(Math.random())*10;
-			String sql = "insert into order(tradeId,username,id,price) value(?,?,?,?)";
+			String sql3 = "insert into username.order(username,id) values(?,?)";
 			try {
 				 conn = dbdao.getConnection();
-				 stmt = conn.prepareStatement(sql);
-				 stmt.setDouble(1, count1*count2);
-				 stmt.setString(2,user.getUsername());
-				 stmt.setString(3, trade.getId());
-				 stmt.setInt(4, trade.getPrice());
+				 stmt = conn.prepareStatement(sql3);
+				 stmt.setString(1,user);
+				 stmt.setString(2, id);
 				 stmt.executeUpdate();	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+				System.out.println("add ß∞‹");
 				e.printStackTrace();
 			}finally {
 				dbdao.closeResource(conn,  stmt, st);
@@ -129,16 +130,16 @@ public class userDao implements dao{
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet st = null;
-			String sql = "insert into tradetable(id,tradename,price,stock) value(?,?,?,?)";
+			String sql = "insert into tradetable(id,tradename,stock) value(?,?,?)";
 			try {
 				 conn = dbdao.getConnection();
 				 stmt = conn.prepareStatement(sql);
 				 stmt.setString(1, trade.getId());
 				 stmt.setString(2,trade.getTradename());
-				 stmt.setInt(3, trade.getPrice());
-				 stmt.setString(4, trade.getStock());
+				 stmt.setString(3, trade.getStock());
 				 stmt.executeUpdate();	
 			} catch (SQLException e) {
+				 System.out.println("addGoods¥ÌŒÛ");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
@@ -168,6 +169,7 @@ public class userDao implements dao{
 				 }
 				 return trade;
 			} catch (SQLException e) {
+				 System.out.println("selectGoods¥ÌŒÛ");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
@@ -186,6 +188,7 @@ public class userDao implements dao{
 				 stmt.setString(1,id);
 				 stmt.executeUpdate();	
 			} catch (SQLException e) {
+				 System.out.println("delGoods¥ÌŒÛ");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
@@ -207,6 +210,7 @@ public class userDao implements dao{
 				 stmt.setString(4, trade.getStock());
 				 stmt.executeUpdate();	
 			} catch (SQLException e) {
+				 System.out.println("updateGoods¥ÌŒÛ");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
@@ -214,7 +218,43 @@ public class userDao implements dao{
 			}
 		
 	}
-
+	  public ResultSet returnOrder(String name) {
+		  Connection conn = null;
+		  PreparedStatement stmt;
+		  
+		  try {
+			conn = dbdao.getConnection();
+			stmt = conn.prepareStatement("select * from username.order where username = ?");
+			stmt.setString(1, name);
+			System.out.println("returnOrder≥…π¶");
+			return stmt.executeQuery();
+			
+		 } catch (SQLException e) {
+			 System.out.println("returnOrder¥ÌŒÛ");
+			e.printStackTrace();
+		 }
+		  
+		  return null;
+	  }
+	  public ResultSet returnTrade(String id) {
+		  Connection conn = null;
+		  PreparedStatement stmt;
+		  
+		  try {
+			orderC orderc = new orderC();
+			conn = dbdao.getConnection();
+			stmt = conn.prepareStatement("select * from username.tradetable where id = ?");
+			stmt.setString(1, id);
+			System.out.println("returnTrade≥…π¶");
+			return stmt.executeQuery();
+			
+		 } catch (SQLException e) {
+			 System.out.println("returnTrade¥ÌŒÛ");
+			e.printStackTrace();
+		 }
+		  
+		  return null;
+	  }
 		
 	
 }
