@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.SpinnerListModel;
@@ -177,11 +179,112 @@ public class userDao implements dao{
 			}
 			return null;
 	  }
+	  
+	  
+	  
+	  
+	  public List<trade> selectGoods() {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet st = null;
+			 List<trade> list2 = new ArrayList<trade>();
+			String sql = "select * from order";
+			try {
+				 conn = dbdao.getConnection();
+				 stmt = conn.prepareStatement(sql);
+				 st = stmt.executeQuery();
+				 trade trade = new trade();
+				 while(st.next()) {
+					 trade.setTradename(st.getString("tradeName"));
+					 trade.setId(st.getString("id"));
+					 trade.setPrice(st.getInt("price"));
+					 trade.setStock(st.getString("stock"));
+					 list2.add(trade);
+		 			//封装成trade对象		 			
+				 }
+				 return list2;
+			} catch (SQLException e) {
+				 System.out.println("selectGoods错误");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				dbdao.closeResource(conn,  stmt, st);
+			}
+			return null;
+	  }
+	  
+	 
+	  public List<Users> selectUsers() {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet st = null;
+	        List<Users> list1 = new ArrayList<Users>();
+			String sql = "select * from userinfo";
+			try {
+				 conn = dbdao.getConnection();
+				 stmt = conn.prepareStatement(sql);
+				 st = stmt.executeQuery();
+				Users users=new Users();
+				 while(st.next()) {
+					 users.setUsername(st.getString("username"));
+					 System.out.println(st.getString("username"));
+					 users.setEmailaddress(st.getString("emailaddress"));
+					 System.out.println(st.getString("emailaddress"));
+
+					 list1.add(users);
+		 			//封装成trade对象		 			
+				 }
+				 return list1;
+			} catch (SQLException e) {
+				 System.out.println("selectGoods错误");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				dbdao.closeResource(conn,  stmt, st);
+			}
+			return null;
+	  }
+	  
+	  
+	  
+	  public void delOrder(String id,String username) {
+		  Connection conn = null;
+			PreparedStatement stmt = null;
+           ResultSet st=null;
+			 System.out.println(id+"1");
+			String sql = "delete from order where id=? and username=?";
+			try {
+				 conn = dbdao.getConnection();
+				 stmt = conn.prepareStatement(sql);
+				 stmt.setString(1,id);
+				 System.out.println(id);
+				 stmt.setString(2, username);
+				 System.out.println(username);
+				 stmt.executeUpdate();	
+				 System.out.println(username+"1"); 
+			} catch (SQLException e) {
+				 System.out.println("delOrder错误");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				dbdao.closeResource(conn,  stmt, st);
+			}
+		  
+	  }  
+	  	  
+	  
+	  
+	  
+	  
+	  
+	  	  
+	  
+	  	  
 	  public void delGoods(String id) {
 		  Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet st = null;
-			String sql = "deltete from tradetable where id=?";
+			String sql = "delete from tradetable where id=?";
 			try {
 				 conn = dbdao.getConnection();
 				 stmt = conn.prepareStatement(sql);
@@ -218,6 +321,9 @@ public class userDao implements dao{
 			}
 		
 	}
+	  
+	  
+	  
 	  public ResultSet returnOrder(String name) {
 		  Connection conn = null;
 		  PreparedStatement stmt;
@@ -236,6 +342,28 @@ public class userDao implements dao{
 		  
 		  return null;
 	  }
+	  
+	 //--------------------------------
+	  public ResultSet returnOrderForSee(String orderId) {
+		  Connection conn = null;
+		  PreparedStatement stmt;
+		  
+		  try {
+			conn = dbdao.getConnection();
+			stmt = conn.prepareStatement("select * from username.order where orderId = ?");
+			stmt.setString(1, orderId);
+			System.out.println("returnOrder成功");
+			return stmt.executeQuery();
+			
+		 } catch (SQLException e) {
+			 System.out.println("returnOrder错误");
+			e.printStackTrace();
+		 }
+		  
+		  return null;
+	  }
+	  
+	  
 	  public ResultSet returnTrade(String id) {
 		  Connection conn = null;
 		  PreparedStatement stmt;

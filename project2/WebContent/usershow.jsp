@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,47 +235,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 	<div class="container">
 	<div class="page">
-		<h1 class="typo1">Typography</h1>
+		<h1 class="typo1">admin</h1>
 		<!--button-->
 		<div class="grid_3 grid_4">
 			<div class="page-header">
-       	<h3>Headings</h3>
+       	<h3>userinfo</h3>
       </div>
   
   <div class="bs-example">
     <table class="table">
       <tbody>
-        <tr>
-          <td><h1 id="h1-bootstrap-heading">h1. Bootstrap heading<a class="anchorjs-link" href="#h1.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h1></td>
-          <td class="type-info">Semibold 36px</td>
-        </tr>
-        <tr>
+      
+        <c:forEach items="${requestScope.list1 }"  var="list1">
+          <tr>
+          <td><div style="width:100px">用户名：${list1.username}</div></td>
+          <td><div style="width:100px">Email：${list1.emailaddress}</div></td>
+          <td><a href="">删除：</a></td>
+           </tr>
+        </c:forEach>
+        
+        <!-- <tr>
           <td><h2 id="h2-bootstrap-heading">h2. Bootstrap heading<a class="anchorjs-link" href="#h2.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h2></td>
           <td class="type-info">Semibold 30px</td>
-        </tr>
-        <tr>
-          <td><h3 id="h3-bootstrap-heading">h3. Bootstrap heading<a class="anchorjs-link" href="#h3.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h3></td>
-          <td class="type-info">Semibold 24px</td>
-        </tr>
-        <tr>
-          <td><h4 id="h4.-bootstrap-heading">h4. Bootstrap heading<a class="anchorjs-link" href="#h4.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h4></td>
-          <td class="type-info">Semibold 18px</td>
-        </tr>
-        <tr>
-          <td><h5 id="h5-bootstrap-heading">h5. Bootstrap heading<a class="anchorjs-link" href="#h5.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h5></td>
-          <td class="type-info">Semibold 14px</td>
-        </tr>
-        <tr>
-          <td><h6  id="h6-bootstrap-heading">h6. Bootstrap heading</h6></td>
-          <td class="type-info">Semibold 12px</td>
-        </tr>
+        </tr> -->
+        
       </tbody>
     </table>
     </div>
   </div>
   <!--buttons-->
 	<div class="page-header">
-        <h3>Buttons</h3>
+        <h3>tradeinfo</h3>
       </div>
       <p class="grid1">
         <button type="button" class="btn btn-lg btn-default">Default</button>

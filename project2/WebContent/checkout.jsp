@@ -251,10 +251,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  
 
 		  
-		  
-		  
-		  
-		  
+		 
+		  		  		  
 		  <c:forEach items="${requestScope.list}" var="list" >
 		  <tr>
 			<td class="ring-in"><a href="single.html" class="at-in"><img src="${list.photoName}" class="img-responsive" alt=""></a>
@@ -263,15 +261,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
 			
 			</div>
+
 			<div class="clearfix"> </div></td>
 			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$${list.price}</td>
+			<td>$${list.price}</td>			
 			<td>FREE SHIPPING</td>
 			<td>$${list.price}</td>
+
+			<td><a href="delOrder.do?id=${list.id}">删除</a></td>
 		  </tr>
 		  </c:forEach>
 		  
-		  
+ 
 		
 		
 	</table>

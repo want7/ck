@@ -1,6 +1,7 @@
 package project2;
 
 import java.util.List;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.taglibs.standard.tag.el.fmt.RequestEncodingTag;
 
 import Dao.userDao;
 import entity.trade;
@@ -41,9 +45,7 @@ public class cart extends HttpServlet {
    			ResultSet result = null;
    			result = userdao.returnOrder(username);
    			String [] ids= new String[10];
-   			/*for(int i =0;i<20;i++) {
-   				ids[i]=null;
-   			}*/
+
    			if(result==null) {
 					System.out.println("id ЮЊПе");
 				}
@@ -54,8 +56,7 @@ public class cart extends HttpServlet {
    				int j=0;
    				System.out.println( j);
 				while(result.next()){				
-					ids[j]=result.getString("id");
-					System.out.println("j:"+j+"result.getString(\"id\"):"+result.getString("id"));
+					ids[j]=result.getString("id");				
 					j++;
 				}
 				
@@ -92,7 +93,6 @@ public class cart extends HttpServlet {
 	}
    		   
    		   
-   		   
-
+   		  
 }
 }
