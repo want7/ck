@@ -53,12 +53,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
 																	
-                    <form action="cart.do" method ="post">
-						<h3>
+                   
+						
 							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
+							<h3><img src="images/cart.png" alt=""/></h3>
+							 <form action="cart.do" >
 							<input type="submit" value="cart">
-					</form>
+				</form>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>

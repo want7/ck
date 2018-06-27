@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -239,21 +241,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--button-->
 		<div class="grid_3 grid_4">
 			<div class="page-header">
-       	<h3>userinfo</h3>
+       	<h3>userInfo</h3>
       </div>
   
   <div class="bs-example">
     <table class="table">
+
       <tbody>
-      
         <c:forEach items="${requestScope.list1 }"  var="list1">
           <tr>
           <td><div style="width:100px">用户名：${list1.username}</div></td>
           <td><div style="width:100px">Email：${list1.emailaddress}</div></td>
-          <td><a href="">删除：</a></td>
+          <td><a href="delUser?username=${list1.username}">删除</a></td>
            </tr>
         </c:forEach>
-        
+
         <!-- <tr>
           <td><h2 id="h2-bootstrap-heading">h2. Bootstrap heading<a class="anchorjs-link" href="#h2.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h2></td>
           <td class="type-info">Semibold 30px</td>
@@ -267,42 +269,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="page-header">
         <h3>tradeinfo</h3>
       </div>
-      <p class="grid1">
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
-      </p>
-      <p class="grid1 ">
-        <button type="button" class="btn btn-1 btn-default">Default</button>
-        <button type="button" class="btn btn-1 btn-primary">Primary</button>
-        <button type="button" class="btn btn-1 btn-success">Success</button>
-        <button type="button" class="btn btn-1 btn-info">Info</button>
-        <button type="button" class="btn btn-1 btn-warning">Warning</button>
-        <button type="button" class="btn btn-1 btn-danger">Danger</button>
-        <button type="button" class="btn btn-1 btn-link">Link</button>
-      </p>
-      <p class="grid1">
-        <button type="button" class="btn btn-sm btn-default">Default</button>
-        <button type="button" class="btn btn-sm btn-primary">Primary</button>
-        <button type="button" class="btn btn-sm btn-success">Success</button>
-        <button type="button" class="btn btn-sm btn-info">Info</button>
-        <button type="button" class="btn btn-sm btn-warning">Warning</button>
-        <button type="button" class="btn btn-sm btn-danger">Danger</button>
-        <button type="button" class="btn btn-sm btn-link">Link</button>
-      </p>
-      <p class="grid1">
-        <button type="button" class="btn btn-xs btn-default">Default</button>
-        <button type="button" class="btn btn-xs btn-primary">Primary</button>
-        <button type="button" class="btn btn-xs btn-success">Success</button>
-        <button type="button" class="btn btn-xs btn-info">Info</button>
-        <button type="button" class="btn btn-xs btn-warning">Warning</button>
-        <button type="button" class="btn btn-xs btn-danger">Danger</button>
-        <button type="button" class="btn btn-xs btn-link">Link</button>
-      </p>
+        
+  <div class="bs-example">
+    <table class="table">
+      
+                      <c:forEach items="${requestScope.list2 }"  var="list2">
+          <tr>
+          <td><div style="width:200px">商品名称：${list2.tradename}</div></td>
+          <td><div style="width:200px">商品价格：${list2.price}</div></td>
+          <td><div style="width:200px">商品库存：${list2.stock}</div></td>
+          
+          <td><a href="delTrade?id=${list2.id}">删除</a></td>
+           </tr>
+        </c:forEach>
+        
+         </table> 
+           </div>
+ 
+    
       <!--//button-->
       <!--bages-->
       <div class="page-header">

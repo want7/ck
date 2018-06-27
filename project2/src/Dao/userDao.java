@@ -188,14 +188,15 @@ public class userDao implements dao{
 			PreparedStatement stmt = null;
 			ResultSet st = null;
 			 List<trade> list2 = new ArrayList<trade>();
-			String sql = "select * from order";
+			String sql = "select * from username.tradetable";
 			try {
 				 conn = dbdao.getConnection();
 				 stmt = conn.prepareStatement(sql);
 				 st = stmt.executeQuery();
-				 trade trade = new trade();
+	
 				 while(st.next()) {
-					 trade.setTradename(st.getString("tradeName"));
+					 trade trade = new trade();
+					 trade.setTradename(st.getString("tradename"));
 					 trade.setId(st.getString("id"));
 					 trade.setPrice(st.getInt("price"));
 					 trade.setStock(st.getString("stock"));
@@ -219,13 +220,14 @@ public class userDao implements dao{
 			PreparedStatement stmt = null;
 			ResultSet st = null;
 	        List<Users> list1 = new ArrayList<Users>();
-			String sql = "select * from userinfo";
+			String sql = "select * from username.userinfo";
 			try {
 				 conn = dbdao.getConnection();
 				 stmt = conn.prepareStatement(sql);
 				 st = stmt.executeQuery();
-				Users users=new Users();
+				
 				 while(st.next()) {
+					 Users users=new Users();
 					 users.setUsername(st.getString("username"));
 					 System.out.println(st.getString("username"));
 					 users.setEmailaddress(st.getString("emailaddress"));
@@ -236,7 +238,7 @@ public class userDao implements dao{
 				 }
 				 return list1;
 			} catch (SQLException e) {
-				 System.out.println("selectGoods´íÎó");
+				 System.out.println("selectUsers´íÎó");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
@@ -252,16 +254,15 @@ public class userDao implements dao{
 			PreparedStatement stmt = null;
            ResultSet st=null;
 			 System.out.println(id+"1");
-			String sql = "delete from order where id=? and username=?";
+			String sql = "delete from username.order where id=? and username=?";
 			try {
 				 conn = dbdao.getConnection();
 				 stmt = conn.prepareStatement(sql);
-				 stmt.setString(1,id);
-				 System.out.println(id);
+				 stmt.setString(1,id);		
 				 stmt.setString(2, username);
-				 System.out.println(username);
+				
 				 stmt.executeUpdate();	
-				 System.out.println(username+"1"); 
+				 
 			} catch (SQLException e) {
 				 System.out.println("delOrder´íÎó");
 				// TODO Auto-generated catch block
@@ -272,7 +273,26 @@ public class userDao implements dao{
 		  
 	  }  
 	  	  
-	  
+	  public void deluser(String name) {
+		    Connection conn = null;
+			PreparedStatement stmt = null;
+             ResultSet st=null;
+			String sql = "delete from username.userinfo where username=?";
+			try {
+				 conn = dbdao.getConnection();
+				 stmt = conn.prepareStatement(sql);			
+				 stmt.setString(1, name);				
+				 stmt.executeUpdate();	
+				 
+			} catch (SQLException e) {
+				 System.out.println("deluser´íÎó");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				dbdao.closeResource(conn,  stmt, st);
+			}
+		  
+	  }    
 	  
 	  
 	  
@@ -280,7 +300,7 @@ public class userDao implements dao{
 	  	  
 	  
 	  	  
-	  public void delGoods(String id) {
+	  public void delTrade(String id) {
 		  Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet st = null;
